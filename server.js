@@ -11,12 +11,25 @@ const oderModel = require('./api/models/oderModels');
 const itemModel = require('./api/models/itemModels');
 const authenticateMiddleware = require('./api/middleware/authenticateMiddleware');
 const oderMiddleware = require('./api/middleware/oderMiddleware');
+const categoryProxyMiddleware = require('./api/middleware/categoryProxyMiddleware');
+const itemProxyMiddleware = require('./api/middleware/itemProxyMiddleware');
+const customerProxyMiddleware = require('./api/middleware/customerProxyMiddleware');
+const orderProxyMiddleware = require('./api/middleware/orderProxyMiddleware');
+const authCategoryMiddleware = require('./api/middleware/authCategoryMiddleware');
 dbconnect();
 app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
-console.log('ok')
+try {
+    app.all('/category', authCategoryMiddleware, categoryProxyMiddleware);
+    app.all('/item', itemProxyMiddleware);
+    app.all('/customer', customerProxyMiddleware);
+    app.all('/oder', orderProxyMiddleware);
+}
+catch (error) {
+    console.log(error);
+}
 // For a fully working example, please see:
 // https://github.com/paypal-examples/docs-examples/tree/main/standard-integration
 

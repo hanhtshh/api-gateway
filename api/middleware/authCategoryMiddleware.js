@@ -1,4 +1,5 @@
-const CATEGORY_PROXY_URLS = require("../routers/proxy");
+
+const { CATEGORY_PROXY_URLS } = require("../routers/proxy");
 const { authUser, authenAdmin } = require("./authenticateMiddleware");
 
 const authCategoryMiddleware = async (request, response, next) => {

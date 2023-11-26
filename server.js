@@ -16,6 +16,9 @@ const itemProxyMiddleware = require('./api/middleware/itemProxyMiddleware');
 const customerProxyMiddleware = require('./api/middleware/customerProxyMiddleware');
 const orderProxyMiddleware = require('./api/middleware/orderProxyMiddleware');
 const authCategoryMiddleware = require('./api/middleware/authCategoryMiddleware');
+const authItemiddleware = require('./api/middleware/authItemMiddleware');
+const authCustomerMiddleware = require('./api/middleware/authCustomerMiddleware');
+const authOrderMiddleware = require('./api/middleware/authOrderMiddleware');
 dbconnect();
 app.use(helmet());
 app.use(cookieParser());
@@ -23,9 +26,9 @@ app.use(express.json());
 app.use(cors());
 try {
     app.all('/category', authCategoryMiddleware, categoryProxyMiddleware);
-    app.all('/item', itemProxyMiddleware);
-    app.all('/customer', customerProxyMiddleware);
-    app.all('/oder', orderProxyMiddleware);
+    app.all('/item', authItemiddleware, itemProxyMiddleware);
+    app.all('/customer', authCustomerMiddleware, customerProxyMiddleware);
+    app.all('/oder', authOrderMiddleware, orderProxyMiddleware);
 }
 catch (error) {
     console.log(error);

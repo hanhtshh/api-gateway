@@ -15,6 +15,9 @@ const authCustomerMiddleware = async (request, response, next) => {
     if (CUSTOMER_PROXY_URLS[forwardable] === "admin") {
         return authenAdmin(request, response, next);
     }
+    if (CUSTOMER_PROXY_URLS[forwardable] === "") {
+        return next();
+    }
 
     return response.status(404).json('not found');
 

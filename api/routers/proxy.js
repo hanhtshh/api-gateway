@@ -1,5 +1,5 @@
 const CATEGORY_PROXY_URLS = {
-    'GET/': "user",
+    'GET/': "",
     'GET/detail/:_id': "admin",
     'POST/': "admin",
     'PUT/:_id': "admin",
@@ -7,7 +7,7 @@ const CATEGORY_PROXY_URLS = {
 };
 
 const ITEM_PROXY_URLS = {
-    'GET/': "user",
+    'GET/': "",
     'POST/': "user",
     'POST/get-by-id/:id': "admin",
     'PUT/:_id': "admin",
@@ -15,7 +15,7 @@ const ITEM_PROXY_URLS = {
 };
 
 const CUSTOMER_PROXY_URLS = {
-    'POST/login': "user",
+    'POST/login': "",
     'GET/logout': "user",
     'GET/': "admin",
     'POST/register': "user",

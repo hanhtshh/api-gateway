@@ -2,7 +2,7 @@ const { default: axios } = require("axios");
 
 const categoryProxyMiddleware = async (request, response, next) => {
     const result = await axios.request({
-        url: `${process.env.ORDER_SERVICE_URL}${request.originalUrl}`,
+        url: `${process.env.CATEGORY_SERVICE_URL}${request.originalUrl}`,
         method: request.method,
         data: request.body,
         headers: {

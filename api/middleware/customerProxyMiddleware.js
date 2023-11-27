@@ -2,7 +2,7 @@ const { default: axios } = require("axios");
 
 const customerProxyMiddleware = async (request, response, next) => {
     const result = await axios.request({
-        url: `${process.env.ORDER_SERVICE_URL}${request.originalUrl}`,
+        url: `${process.env.CUSTOMER_SERVICE_URL}${request.originalUrl}`,
         method: request.method,
         data: request.body,
         headers: {

@@ -25,14 +25,14 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
 try {
-    app.all('/category/*', authCategoryMiddleware, categoryProxyMiddleware);
-    app.all('/item/*', authItemiddleware, itemProxyMiddleware);
-    app.all('/customer/*', authCustomerMiddleware, customerProxyMiddleware);
-    app.all('/oder/*', authOrderMiddleware, orderProxyMiddleware);
     app.all('/category', authCategoryMiddleware, categoryProxyMiddleware);
     app.all('/item', authItemiddleware, itemProxyMiddleware);
     app.all('/customer', authCustomerMiddleware, customerProxyMiddleware);
     app.all('/oder', authOrderMiddleware, orderProxyMiddleware);
+    app.all('/category/*', authCategoryMiddleware, categoryProxyMiddleware);
+    app.all('/item/*', authItemiddleware, itemProxyMiddleware);
+    app.all('/customer/*', authCustomerMiddleware, customerProxyMiddleware);
+    app.all('/oder/*', authOrderMiddleware, orderProxyMiddleware);
 }
 catch (error) {
     console.log(error);

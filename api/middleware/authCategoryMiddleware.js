@@ -16,6 +16,10 @@ const authCategoryMiddleware = async (request, response, next) => {
         return authenAdmin(request, response, next);
     }
 
+    if (CATEGORY_PROXY_URLS[forwardable] === "") {
+        return next();
+    }
+
     return response.status(404).json('not found');
 
 };

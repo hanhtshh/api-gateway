@@ -16,6 +16,10 @@ const authOrderMiddleware = async (request, response, next) => {
         return authenAdmin(request, response, next);
     }
 
+    if (ORDER_PROXY_URLS[forwardable] === "") {
+        return next();
+    }
+
     return response.status(404).json('not found');
 
 };

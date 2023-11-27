@@ -15,6 +15,9 @@ const authItemiddleware = async (request, response, next) => {
     if (ITEM_PROXY_URLS[forwardable] === "admin") {
         return authenAdmin(request, response, next);
     }
+    if (ITEM_PROXY_URLS[forwardable] === "") {
+        return next();
+    }
 
     return response.status(404).json('not found');
 
